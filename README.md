@@ -8,6 +8,8 @@ The website includes a real-data dashboard, an interactive 30-day scenario sandb
 
 ### Open the website
 
+Published website: [Open ASTRA-PULSE](https://jennyzhang9.github.io/SpaceBaguette.github.io/astra-pulse/index.html).
+
 Double-click this folder’s index.html, or the root index.html shortcut. No installation, build step, account or server is required. All processing is browser-local. Bundled research records work offline; optional Google Fonts have system fallbacks. For a local HTTP preview, run node preview.cjs and open http://127.0.0.1:8765 .
 
 Real measurements are terrestrial clinical recordings, not astronaut data. Generated scenarios are explicitly synthetic. The check-in index is a transparent project demonstration, not a validated measure of overall health or all seven dimensions of wellbeing.
