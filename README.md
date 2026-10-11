@@ -56,6 +56,12 @@ Explore physical, mental/emotional, social, spiritual/religious, intellectual, o
 
 Find original-data attribution, the official NASA challenge, model boundaries and scientific sources. This page distinguishes real observations, generated sequences and user-entered context.
 
+### Sleep & lifestyle data
+
+Explore all 374 bundled Kaggle profiles in a scatter plot with selectable axes. Inspect the first 25 rows or download the full original CSV. In Try a scenario, select a dataset profile and press Use profile in scenario to copy its sleep duration, HR, BP and stress into the controls. The timeline remains generated; it is not that profile’s recorded history.
+
+The dataset author identifies these profiles as synthetic. A separate educational ML panel estimates the dataset’s sleep-quality rating from scenario inputs; it does not measure your actual sleep quality or replace the wellbeing check-in index.
+
 ### Suggested demonstration
 
 Replay a real recording, switch to a short-sleep or demanding-week scenario, scrub from day 1 to day 20, explain the index and next steps, generate a new trace, demonstrate a journal entry, then open a wrist sensor explanation. Finish with the provenance and limitations.
@@ -69,6 +75,9 @@ Replay a real recording, switch to a short-sleep or demanding-week scenario, scr
 | index.html | Entry point and script loading |
 | style.css + experience.css | Pastel styling, responsive layout, charts, wearable and dialogs |
 | research-data.js | Six full original research records, bundled for offline use |
+| sleep-health.csv + sleep-data.js | Original Kaggle CSV and browser bundle of 374 synthetic profiles |
+| sleep-model.js | Dataset explorer, scenario profile loading and supervised sleep-quality regressor |
+| prepare-sleep.py + sleep-provenance.json | Reproducible Kaggle download, attribution and source metadata |
 | health-engine.js | Isolation Forest, empirical generation and index/action logic |
 | experience.js | Navigation, interactive plots, forms, replay, CSV and wearable interactions |
 | prepare-data.cjs | Reproducible source download and schema validation |
@@ -89,6 +98,14 @@ BIDMC PPG and Respiration Dataset v1.0.0, records 01–06. Each has 481 original
 - PhysioNet attribution: Pollard et al. (2026), PhysioNet as a global platform for biomedical research. DOI: 10.1038/s44360-026-00096-z.
 
 Reproduce the download with node prepare-data.cjs (requires internet). No NASA physiological dataset, real BP, sleep, stress or EDA dataset is ingested in this version. NASA supplies the mission context and challenge brief. Keep that boundary explicit.
+
+The [Sleep Health and Lifestyle Dataset by Laksika Tharmalingam](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset) is also bundled under CC0 Public Domain. Its author explicitly describes it as synthetic data created for illustrative purposes. The downloaded CSV contains 374 rows, although the source overview mentions 400. It contains sleep duration/quality, HR, BP, stress, activity and demographic fields; BP strings are additionally parsed into numeric systolic and diastolic columns. It contains no sweat/EDA, respiration or SpO₂ measurements. Run `python astra-pulse/prepare-sleep.py` from the repository root to reproduce the download with internet access.
+
+### Supervised sleep-quality training
+
+The educational 5-nearest-neighbors regressor uses sleep duration, HR, reported stress, systolic BP and diastolic BP to estimate the source’s sleep-quality rating. Identical feature vectors are grouped before a deterministic 80/20 split, with each group’s target averaged. Training has 55 unique feature groups and testing has 14. Standardization is fitted on training groups only; five equally weighted neighbors provide each prediction.
+
+Held-out mean absolute error is approximately 0.47 rating points. This evaluates reproduction of synthetic labels, not clinical accuracy or astronaut performance. Missing inputs produce no prediction, and inputs outside the training range display a notice. Sleep-disorder labels are retained in the original CSV but are not used to train a diagnostic model. This model is separate from the experimental wellbeing index and BIDMC generator.
 
 ### Generative model
 
@@ -117,6 +134,8 @@ Action suggestions explain rest, supportive conversations, changed patterns, rep
 ### Verification
 
 Run node verify-v2.cjs. It checks the six original records, exact observation count, training-window separation, deterministic generation, scenario responses, missing-data scoring, six page renders and replay plot changes.
+
+The current verifier also checks the 374-row sleep bundle, finite supervised evaluation, missing-input handling and all seven pages. Run `node astra-pulse/check-sleep.cjs` from the repository root for the dataset browser checks: plot axes, profile loading, ML panel, mobile layout and runtime errors. Its Playwright path is environment-specific.
 
 Run node --check experience.js and node --check health-engine.js for syntax. With preview.cjs running and the bundled Playwright/installed Edge available, browser-qa.cjs exercises replay, health controls, actions, training, persistence, held-out personal ML, all sensor dialogs, keyboard rotation and mobile overflow. Its package path is environment-specific and may need adjustment on another computer.
 

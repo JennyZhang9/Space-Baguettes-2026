@@ -1,6 +1,9 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const c=vm.createContext({window:{},Number,console});
 vm.runInContext(fs.readFileSync(__dirname+'/research-data.js','utf8'),c);c.BIDMC=c.window.BIDMC;
+vm.runInContext(fs.readFileSync(__dirname+'/sleep-data.js','utf8'),c);c.SLEEP_DATA=c.window.SLEEP_DATA;
+vm.runInContext(fs.readFileSync(__dirname+'/sleep-model.js','utf8'),c);c.SleepModel=c.window.SleepModel;
+assert.equal(c.SLEEP_DATA.rows.length,374);assert.ok(Number.isFinite(c.SleepModel.mae));assert.equal(c.SleepModel.training+c.SleepModel.heldout,c.SleepModel.groups);assert.equal(c.SleepModel.predict([null,70,4,120,80]),null);
 vm.runInContext(fs.readFileSync(__dirname+'/health-engine.js','utf8'),c);c.HealthEngine=c.window.HealthEngine;
 vm.runInContext('var testModel=HealthEngine.train(BIDMC[0],2026); var input={sleep:4,hr:80,sys:125,dia:82,stress:8,sweat:8,sensor:false}; var generated=HealthEngine.generate(testModel,input);',c);
 assert.equal(c.BIDMC.length,6);assert.equal(c.BIDMC.reduce((s,r)=>s+r.rows.length,0),2886);
@@ -13,6 +16,6 @@ const elements={'#app':{innerHTML:''}},dom={querySelector:s=>elements[s]||null,q
 c.document=dom;c.localStorage={getItem:()=>null};c.setInterval=setInterval;c.clearInterval=clearInterval;c.setTimeout=setTimeout;c.BIDMC=c.window.BIDMC;
 vm.runInContext(fs.readFileSync(__dirname+'/cuff-model.js','utf8'),c);
 vm.runInContext(fs.readFileSync(__dirname+'/experience.js','utf8'),c);
-for(const page of ['dashboard','lab','tracker','wearable','wellbeing','science']){vm.runInContext(`currentPage='${page}';render()`,c);assert.ok(elements['#app'].innerHTML.includes('<main'));assert.ok(!elements['#app'].innerHTML.includes('NaN'))}
+for(const page of ['dashboard','lab','tracker','wearable','wellbeing','sleepdata','science']){vm.runInContext(`currentPage='${page}';render()`,c);assert.ok(elements['#app'].innerHTML.includes('<main'));assert.ok(!elements['#app'].innerHTML.includes('NaN'))}
 const a=vm.runInContext("plot(simulation,'hr',0)",c),b=vm.runInContext("plot(simulation,'hr',29)",c);assert.notEqual(a,b);assert.ok(a.includes('day 1'));assert.ok(b.includes('day 30'));
 console.log('Passed: six full research records, generation reproducibility, training-window boundary, scenario responses, missing-data scoring, six page renders, and replay plot changes.');
