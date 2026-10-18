@@ -8,7 +8,7 @@ The website includes a real-data dashboard, an interactive 30-day scenario sandb
 
 ### Open the website
 
-Published website: [Open ASTRA-PULSE](https://jennyzhang9.github.io/SpaceBaguette.github.io/astra-pulse/index.html?refresh=sleep-update-2).
+Published website: [Open ASTRA-PULSE](https://jennyzhang9.github.io/SpaceBaguette.github.io/astra-pulse/index.html?refresh=space-theme-20261018).
 
 Double-click this folder’s index.html, or the root index.html shortcut. No installation, build step, account or server is required. All processing is browser-local. Bundled research records work offline; optional Google Fonts have system fallbacks. For a local HTTP preview, run node preview.cjs and open http://127.0.0.1:8765 .
 
