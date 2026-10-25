@@ -1,4 +1,4 @@
-# ASTRA-PULSE
+# Astro Sensor
 
 ## 1. What the website does
 
@@ -15,6 +15,18 @@ Double-click this folder’s index.html, or the root index.html shortcut. No ins
 Real measurements are terrestrial clinical recordings, not astronaut data. Generated scenarios are explicitly synthetic. The check-in index is a transparent project demonstration, not a validated measure of overall health or all seven dimensions of wellbeing.
 
 ## 2. How to navigate and use it
+
+### Updated interface: Astro Sensor
+
+The site now uses a dark navy, cyan and violet space theme. Navigation labels are **Home**, **What if?**, **My journal**, **Devices & goals**, **Wellbeing guide**, **Sleep data** and **Data & science**. The **Everyday** view keeps model-training controls out of the main flow; **Detailed** reveals them. Optional scroll reveals respect reduced-motion preferences.
+
+- **What if?** accepts numbers as well as sliders and includes work-shift, quiet-day and busy-day presets. Scenarios remain hypothetical.
+- **My journal** accepts single values or ranges such as `65-75`. Original ranges are retained in exported CSV and the table; charts and models use midpoints, without modeling uncertainty. Unit explanations appear beside the form and in the journal guide. Five paired sleep/heart-rate entries enable a correlation calculation; three heart-rate entries enable a simple recent-average forecast. Neither establishes causation or predicts illness.
+- **Devices & goals** keeps the rotatable watch and cuff and adds a rotatable ear-sensor concept. Save sleep and movement goals on this browser; the watch preview updates immediately. Export goals as CSV for a phone. Goals do not automatically sync or write to a real wearable.
+- **Connect heart-rate device** uses Web Bluetooth’s standard Heart Rate service on compatible browsers and HTTPS. It displays read-only notifications from an explicitly selected compatible nearby device. Hardware pairing has not been tested with a physical sensor. Consumer watches may not expose this service. Live readings are not automatically saved to the journal.
+- **Pulse** is a browser-local, rule-based AI-style helper that adapts replies to the current page, saved goals and journal count. It is not a remote language model or diagnostic service. Daily encouragement changes by local calendar day.
+
+Runtime additions: `astro.js` implements these companion features, `astro.css` provides the accessible dark palette, and `orbit-scene.svg` is an original space illustration. Run `node astra-pulse/check-astro.cjs` from the repository root for checks of naming, typed inputs, modes, ranges, goal previews, ear controls, helper responses and mobile layouts. The browser dependency path is specific to the development environment.
 
 ### Research dashboard
 
