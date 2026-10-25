@@ -8,7 +8,7 @@ The website includes a real-data dashboard, an interactive 30-day scenario sandb
 
 ### Open the website
 
-Published website: [Open Astro Sensor](https://jennyzhang9.github.io/SpaceBaguette.github.io/astra-pulse/index.html?refresh=20261025-astra3).
+Published website: [Open Astro Sensor](https://jennyzhang9.github.io/SpaceBaguette.github.io/astra-pulse/index.html?refresh=20261025-advanced4).
 
 Double-click this folder’s index.html, or the root index.html shortcut. No installation, build step, account or server is required. All processing is browser-local. Bundled research records work offline; optional Google Fonts have system fallbacks. For a local HTTP preview, run node preview.cjs and open http://127.0.0.1:8765 .
 
@@ -18,7 +18,7 @@ Real measurements are terrestrial clinical recordings, not astronaut data. Gener
 
 ### Updated interface: Astro Sensor
 
-The site now uses a dark navy, cyan and violet space theme. Navigation labels are **Home**, **What if?**, **My journal**, **Devices & goals**, **Wellbeing guide**, **Sleep data** and **Data & science**. The **Everyday** view keeps model-training controls out of the main flow; **Detailed** reveals them. Optional scroll reveals respect reduced-motion preferences.
+The site now uses a dark navy, cyan and violet space theme. Navigation labels are **Home**, **What if?**, **My journal**, **Devices & goals**, **Wellbeing guide**, **Sleep data** and **Data & science**. On **What if?**, select **Show advanced model settings** to reveal optional training controls. There is no global view switch. Optional scroll reveals respect reduced-motion preferences.
 
 - **What if?** accepts numbers as well as sliders and includes work-shift, quiet-day and busy-day presets. Scenarios remain hypothetical.
 - **My journal** accepts single values or ranges such as `65-75`. Original ranges are retained in exported CSV and the table; charts and models use midpoints, without modeling uncertainty. Unit explanations appear beside the form and in the journal guide. Five paired sleep/heart-rate entries enable a correlation calculation; three heart-rate entries enable a simple recent-average forecast. Neither establishes causation or predicts illness.
