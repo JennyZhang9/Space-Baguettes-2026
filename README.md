@@ -8,7 +8,7 @@ The website includes a real-data dashboard, an interactive 30-day scenario sandb
 
 ### Open the website
 
-Published website: [Open Astro Sensor](https://jennyzhang9.github.io/SpaceBaguette.github.io/astra-pulse/index.html?refresh=20261025-pulse2).
+Published website: [Open Astro Sensor](https://jennyzhang9.github.io/SpaceBaguette.github.io/astra-pulse/index.html?refresh=20261025-astra3).
 
 Double-click this folder’s index.html, or the root index.html shortcut. No installation, build step, account or server is required. All processing is browser-local. Bundled research records work offline; optional Google Fonts have system fallbacks. For a local HTTP preview, run node preview.cjs and open http://127.0.0.1:8765 .
 
@@ -24,7 +24,7 @@ The site now uses a dark navy, cyan and violet space theme. Navigation labels ar
 - **My journal** accepts single values or ranges such as `65-75`. Original ranges are retained in exported CSV and the table; charts and models use midpoints, without modeling uncertainty. Unit explanations appear beside the form and in the journal guide. Five paired sleep/heart-rate entries enable a correlation calculation; three heart-rate entries enable a simple recent-average forecast. Neither establishes causation or predicts illness.
 - **Devices & goals** keeps the rotatable watch and cuff and adds a rotatable ear-sensor concept. Save sleep and movement goals on this browser; the watch preview updates immediately. Export goals as CSV for a phone. Goals do not automatically sync or write to a real wearable.
 - **Connect heart-rate device** uses Web Bluetooth’s standard Heart Rate service on compatible browsers and HTTPS. It displays read-only notifications from an explicitly selected compatible nearby device. Hardware pairing has not been tested with a physical sensor. Consumer watches may not expose this service. Live readings are not automatically saved to the journal.
-- **Pulse** is a free browser-local website guide. Use **Ask Pulse** in the top bar or expand the panel at the bottom of any page. It searches 27 curated explanations with TF-IDF ranking, concept/synonym expansion and a small current-page tie-break. It remembers the last topic for short follow-ups, offers relevant page buttons, retains up to 40 conversation messages across page navigation and declines questions without a reliable match. Clear chat resets the session conversation. It uses no API, embedding download or generative language model, and sends no questions or journal data to a server. Answers are curated website documentation, not medical advice. Daily encouragement changes by local calendar day.
+- **Astra** is a free browser-local website guide. Use **Ask Astra** in the top bar or expand the panel at the bottom of any page. It searches 27 curated explanations with TF-IDF ranking, concept/synonym expansion and a small current-page tie-break. It remembers the last topic for short follow-ups, offers relevant page buttons, retains up to 40 conversation messages across page navigation and declines questions without a reliable match. Clear chat resets the session conversation. It uses no API, embedding download or generative language model, and sends no questions or journal data to a server. Answers are curated website documentation, not medical advice. Daily encouragement changes by local calendar day.
 
 Runtime additions: `astro.js` implements these companion features, `astro.css` provides the accessible dark palette, and `orbit-scene.svg` is an original space illustration. Run `node astra-pulse/check-astro.cjs` from the repository root for checks of naming, typed inputs, modes, ranges, goal previews, ear controls, helper responses and mobile layouts. The browser dependency path is specific to the development environment.
 
@@ -108,7 +108,7 @@ BIDMC PPG and Respiration Dataset v1.0.0, records 01–06. Each has 481 original
 - Dataset: https://physionet.org/content/bidmc/1.0.0/
 - Original CSV pattern: https://physionet.org/files/bidmc/1.0.0/bidmc_csv/bidmc_01_Numerics.csv (replace 01 with 02–06).
 - Data license: Open Data Commons Attribution License v1.0, https://opendatacommons.org/licenses/by/1-0/
-- Pimentel et al., Towards a Robust Estimation of Respiratory Rate from Pulse Oximeters, IEEE TBME 64(8), 1914–1923. DOI: 10.1109/TBME.2016.2613124.
+- Pimentel et al., Towards a Robust Estimation of Respiratory Rate from Astra Oximeters, IEEE TBME 64(8), 1914–1923. DOI: 10.1109/TBME.2016.2613124.
 - PhysioNet attribution: Pollard et al. (2026), PhysioNet as a global platform for biomedical research. DOI: 10.1038/s44360-026-00096-z.
 
 Reproduce the download with node prepare-data.cjs (requires internet). No NASA physiological dataset, real BP, sleep, stress or EDA dataset is ingested in this version. NASA supplies the mission context and challenge brief. Keep that boundary explicit.
